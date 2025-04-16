@@ -2,6 +2,14 @@ import java.util.Scanner;
 
 public class Screen {
 
+    public static void printHands() {
+        for (int i = 0; i < Game.getNumberOfPlayers() -1; i++) {
+            for (int j = 0; j < Game.totalPlayers[i].hand.size(); j++) {
+                System.out.print(Game.totalPlayers[i].hand.get(j));
+            }
+            System.out.println();
+        }
+    }
 
     public static int getPlayers() {
         int nPlayers;
@@ -39,9 +47,11 @@ public class Screen {
         return g;
     }
 
-   /* public void errorMng(int errorCode) {
-        if ()
-    }*/
+    public static void errorMng(int errorCode) {
+        if (errorCode == 1) {
+            System.out.println("Nombre de jugadors massa elevat per aquesta aplicació.");
+        }
+    }
 
     public static void jocIndividual(){
         System.out.println("jugadors insuficients per jugar en parelles. Aquestes son les opcions per jocs individuals.");

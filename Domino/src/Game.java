@@ -1,29 +1,65 @@
 public class Game {
 
-    public void playGame(){
+    private static int numberOfPlayers = Screen.getPlayers();
+    private Player[] team1 = new Player[numberOfPlayers / 2];
+    private Player[] team2 = new Player[numberOfPlayers / 2];
+    protected static Player[] totalPlayers = new Player[numberOfPlayers - 1];
+    private char mode;
+    private char gameType;
+    private char gameTypeTeam;
 
-        int numberOfPlayers = Screen.getPlayers();
+    public static int getNumberOfPlayers(){
+        return numberOfPlayers;
+    }
 
-        if (numberOfPlayers == 4) {
+    public static void setUpGame() {
+        Bag.createBag();
 
-            char mode = Screen.getGameMode();
+        Background.giveTiles();
+        Screen.printHands();
+
+        /*if (numberOfPlayers == 4) {
+
+            mode = Screen.getGameMode();
 
             if (mode == 'I') {
 
-                Screen.offerIndvGames();
+                gameType = Screen.offerIndvGames();
             } else {
 
-                Screen.offerTeamGames();
+                gameTypeTeam = Screen.offerTeamGames();
             }
         } else if (numberOfPlayers < 4) {
 
             Screen.jocIndividual();
+            gameType = Screen.offerIndvGames();
         } else {
 
+            Screen.errorMng(1);
+            System.exit(0);
         }
         // select game mode + num players
 
+        // create players and sort teams
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player jugador = new Player();
+            totalPlayers[i] = jugador;
+
+            if (mode != 'I') {
+                if (i % 2 == 0) {
+                    team1[i / 2] = jugador;
+                } else {
+                    team2[i / 2] = jugador;
+                }
+            }
+        }
+    }
+
+    public void playGame() {
         // deal tiles from bag to hand
+        Background.giveTiles();
+
+        // standard partida individual
 
         while (p = 150) // check win cond (reach points req)
             do {
@@ -36,7 +72,7 @@ public class Game {
 
                         // save progres
                     }
-            }
+            }*/
 
     }
 }

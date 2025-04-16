@@ -1,6 +1,9 @@
 public class Main {
     public static void main(String[] args) {
 
+        Game game = new Game();
+        Game.setUpGame();
+
         // test de print de tile
         /*
         for (int i = 0; i <= 6; i++) {
