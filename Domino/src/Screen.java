@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Screen {
 
     public static void printHands() {
-        for (int i = 0; i < Game.getNumberOfPlayers() -1; i++) {
-            for (int j = 0; j < Game.totalPlayers[i].hand.size(); j++) {
-                System.out.print(Game.totalPlayers[i].hand.get(j));
+        for (int i = 0; i < Game.getNumberOfPlayers(); i++) {
+            for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
+                System.out.print(Game.totalPlayers[i].getHand().get(j));
             }
             System.out.println();
         }

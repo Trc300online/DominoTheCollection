@@ -3,7 +3,7 @@ public class Game {
     private static int numberOfPlayers = Screen.getPlayers();
     private Player[] team1 = new Player[numberOfPlayers / 2];
     private Player[] team2 = new Player[numberOfPlayers / 2];
-    protected static Player[] totalPlayers = new Player[numberOfPlayers - 1];
+    protected static Player[] totalPlayers = new Player[numberOfPlayers];
     private char mode;
     private char gameType;
     private char gameTypeTeam;
@@ -15,6 +15,10 @@ public class Game {
     public static void setUpGame() {
         Bag.createBag();
 
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player player = new Player();
+            totalPlayers[i] = player;
+        }
         Background.giveTiles();
         Screen.printHands();
 

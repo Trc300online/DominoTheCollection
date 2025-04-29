@@ -7,7 +7,7 @@ public class Background {
     }
 
     public static void giveTiles() {
-        for (int j = 0; j < Game.getNumberOfPlayers() -1; j++){
+        for (int j = 0; j < Game.getNumberOfPlayers(); j++){
 
             for (int i = 0; i < 7; i++) {
 
