@@ -6,7 +6,7 @@ public class Game {
     protected static Player[] totalPlayers = new Player[numberOfPlayers];
     private static char mode;
     private static char gameType;
-    private static char gameTypeTeam;
+    //private static char gameTypeTeam;
 
     public static int getNumberOfPlayers(){
         return numberOfPlayers;
@@ -24,7 +24,8 @@ public class Game {
                 gameType = Screen.offerIndvGames();
             } else {
 
-                gameTypeTeam = Screen.offerTeamGames();
+                gameType = Screen.offerTeamGames();
+                //gameTypeTeam = Screen.offerTeamGames();
             }
         } else if (numberOfPlayers < 4) {
 
@@ -62,6 +63,7 @@ public class Game {
         System.out.println(team2[0].getHand());
         System.out.println(team2[1].getHand());
 
+        /*
         if (mode == 'I') {
             if (gameType == 'E') {
                 GameEspañol(mode);
@@ -94,6 +96,24 @@ public class Game {
             if (gameTypeTeam == 'P') {
                 GamePonce(mode);
             }
+        }
+        */
+
+        switch (gameType) {
+            case 'E':
+                GameEspañol(mode);
+            case 'M':
+                GameMexica(mode);
+            case 'L':
+                GameLlati(mode);
+            case 'C':
+                GameColomabia(mode);
+            case 'V':
+                GameVeneçola(mode);
+            case 'X':
+                GameXile(mode);
+            case 'P':
+                GamePonce(mode);
         }
     }
 
