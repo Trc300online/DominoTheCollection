@@ -5,8 +5,9 @@ public class Screen {
     public static void printHands() {
         for (int i = 0; i < Game.getNumberOfPlayers(); i++) {
             for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
-                System.out.print(Game.totalPlayers[i].getHand().get(j));
+                System.out.print(Game.totalPlayers[i].getHand().get(j) + " ");
             }
+            System.out.println();
             System.out.println();
         }
     }
