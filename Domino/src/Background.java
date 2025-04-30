@@ -19,4 +19,16 @@ public class Background {
         }
     }
 
+    public static int selectStarter() {
+        for (int x = 6; x >= 0; x--) {
+            for (int i = 0; i < Game.getNumberOfPlayers(); i++) {
+                for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
+                    if (Game.totalPlayers[i].getHand().get(j).getEsquerra() == x && Game.totalPlayers[i].getHand().get(j).getDreta() == x) {
+                        return i;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
 }

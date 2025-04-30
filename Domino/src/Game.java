@@ -52,16 +52,16 @@ public class Game {
                 }
             }
         }
-        Background.giveTiles();
-
-        for (int i = 0; i < totalPlayers.length; i++) {
-            System.out.println(totalPlayers[i].getHand());
-        }
-        System.out.println();
-        System.out.println(team1[0].getHand());
-        System.out.println(team1[1].getHand());
-        System.out.println(team2[0].getHand());
-        System.out.println(team2[1].getHand());
+//        Background.giveTiles();
+//
+//        for (int i = 0; i < totalPlayers.length; i++) {
+//            System.out.println(totalPlayers[i].getHand());
+//        }
+//        System.out.println();
+//        System.out.println(team1[0].getHand());
+//        System.out.println(team1[1].getHand());
+//        System.out.println(team2[0].getHand());
+//        System.out.println(team2[1].getHand());
 
         /*
         switch (gameType) {
@@ -83,10 +83,44 @@ public class Game {
          */
     }
 
-    public void playGame() {
+    public void playGame(int points, char mode) {
         // deal tiles from bag to hand
         Background.giveTiles();
 
+        while (!winCond()){
+
+            int count = Background.selectStarter();
+            int skippedPlayers = 0;
+
+            while (skippedPlayers < totalPlayers.length){
+
+                if (!canPlaceTileOnTable()){
+                    Screen.errorMng(2);
+                    if (canSteal)
+                    skippedPlayers++;
+                }
+                    placeTileOnTable();
+
+                if (totalPlayers[count].isEmptyHand()){
+                    break;
+                }
+                if (count++ == totalPlayers.length -1) {
+                    count = 0;
+                } else {
+                    count++;
+                }
+
+                if (count == 1){
+                    count = 2;
+                } else if (count == 2) {
+                    count = 3;
+                } else if (count == 3) {
+                    count = 4;
+                } else if (count == 4) {
+                    count = 1;
+                }
+            }
+        }
 
 
         // standard partida individual

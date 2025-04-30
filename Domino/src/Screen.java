@@ -52,6 +52,9 @@ public class Screen {
         if (errorCode == 1) {
             System.out.println("Nombre de jugadors massa elevat per aquesta aplicació.");
         }
+        if (errorCode == 2) {
+            System.out.println("No pots colocar cap fitxa");
+        }
     }
 
     public static void jocIndividual(){
