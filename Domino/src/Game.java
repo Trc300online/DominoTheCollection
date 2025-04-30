@@ -64,41 +64,6 @@ public class Game {
         System.out.println(team2[1].getHand());
 
         /*
-        if (mode == 'I') {
-            if (gameType == 'E') {
-                GameEspañol(mode);
-            }
-            if (gameType == 'M') {
-                GameMexica(mode);
-            }
-            if (gameType == 'X') {
-                GameXile(mode);
-            }
-        } else {
-            if (gameTypeTeam == 'E') {
-                GameEspañol(mode);
-            }
-            if (gameTypeTeam == 'M') {
-                GameMexica(mode);
-            }
-            if (gameTypeTeam == 'L') {
-                GameLlati(mode);
-            }
-            if (gameTypeTeam == 'C') {
-                GameColomabia(mode);
-            }
-            if (gameTypeTeam == 'V') {
-                Gameveneçola(mode);
-            }
-            if (gameTypeTeam == 'X') {
-                GameXile(mode);
-            }
-            if (gameTypeTeam == 'P') {
-                GamePonce(mode);
-            }
-        }
-        */
-
         switch (gameType) {
             case 'E':
                 GameEspañol(mode);
@@ -115,6 +80,7 @@ public class Game {
             case 'P':
                 GamePonce(mode);
         }
+         */
     }
 
     public void playGame() {
