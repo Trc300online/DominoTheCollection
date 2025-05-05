@@ -31,4 +31,24 @@ public class Background {
         }
         return 0;
     }
+
+    public static boolean canPlaceTileOnTable(int count) {
+
+        if (Table.isTableEmpty()) {
+            return true;
+        }
+
+        int farDreta = Table.getFarDreta();
+        int farEsquerra = Table.getFarEsquerra();
+
+        for (Tile tile : Game.totalPlayers[count].getHand()) {
+            if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
+                tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
+                return true;
+            }
+        }
+        return false;
+
+
+    }
 }

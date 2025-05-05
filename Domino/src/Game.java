@@ -94,12 +94,13 @@ public class Game {
 
             while (skippedPlayers < totalPlayers.length){
 
-                if (!canPlaceTileOnTable()){
+                if (!Background.canPlaceTileOnTable(count)){
                     Screen.errorMng(2);
-                    if (canSteal)
+                    if (canSteal())
                     skippedPlayers++;
-                }
+                } else {
                     placeTileOnTable();
+                }
 
                 if (totalPlayers[count].isEmptyHand()){
                     break;
