@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Player {
     protected ArrayList<Tile> hand = new ArrayList<>();
-    protected boolean emptyHand;
+    protected int Points = 0;
 
     public void setHand(Tile ficha) {
         hand.add(ficha);

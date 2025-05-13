@@ -26,4 +26,11 @@ public class Tile {
     public int getDreta() {
         return dreta;
     }
+
+    public void flipTile() {
+        int temp;
+        temp = dreta;
+        dreta = esquerra;
+        esquerra = temp;
+    }
 }

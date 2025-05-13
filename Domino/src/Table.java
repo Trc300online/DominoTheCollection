@@ -25,4 +25,21 @@ public class Table {
         int value = getTable().get(0).getEsquerra();
         return value;
     }
+
+    public static void placeTileOnTable(int count) {
+        int tilePos = Screen.askGetTileToPlace() -1;
+        char tablePos = Screen.askGetTablePlacement();
+        if (tablePos == 'E') {
+            if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
+                Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+            }
+            table.addFirst(Game.totalPlayers[count].getHand().get(tilePos));
+        } else if (tablePos == 'D') {
+            if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
+                Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+            }
+            table.addLast(Game.totalPlayers[count].getHand().get(tilePos));
+        }
+        Game.totalPlayers[count].getHand().remove(tilePos);
+    }
 }

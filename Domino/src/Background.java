@@ -48,7 +48,31 @@ public class Background {
             }
         }
         return false;
+    }
 
-
+    public static boolean winCond(int points, char gameType) {
+        switch (gameType) {
+            case 'E':
+            case 'M':
+            case 'L':
+                if (points >= 200){
+                    return true;
+                }
+            case 'C':
+            case 'V':
+                if (points >= 100){
+                    return true;
+                }
+            case 'X':
+                if (points >= 121){
+                    return true;
+                }
+            case 'P':
+                if (points >= 20){
+                    return true;
+                }
+            default:
+                return false;
+        }
     }
 }

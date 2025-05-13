@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Screen {
@@ -10,6 +11,23 @@ public class Screen {
             System.out.println();
             System.out.println();
         }
+    }
+
+    public static void printPlayerHand(int count) {
+        for (int j = 0; j < Game.totalPlayers[count].getHand().size(); j++) {
+            System.out.print(Game.totalPlayers[count].getHand().get(j) + " ");
+        }
+    }
+
+    public static void printTable() {
+        for (int j = 0; j < Table.getTable().size(); j++) {
+            System.out.print(Table.getTable().get(j) + " ");
+        }
+    }
+
+    public static void spacer() {
+        System.out.println();
+        System.out.println();
     }
 
     public static int getPlayers() {
@@ -59,5 +77,20 @@ public class Screen {
 
     public static void jocIndividual(){
         System.out.println("jugadors insuficients per jugar en parelles. Aquestes son les opcions per jocs individuals.");
+    }
+
+    public static int askGetTileToPlace() {
+        int pos;
+        Scanner posScan = new Scanner(System.in);
+        System.out.println("Quina fitxa vols colocar");
+        pos = Integer.parseInt(posScan.next());
+
+        return pos;
+    }
+
+    public static char askGetTablePlacement() {
+        Scanner posTable = new Scanner(System.in);
+        System.out.println("A quin extrem vols posar la fitxa: [D] Dreta | [E] Esquerra");
+        return posTable.next().toUpperCase().charAt(0);
     }
 }
