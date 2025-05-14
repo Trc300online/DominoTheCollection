@@ -28,6 +28,9 @@ public class Table {
 
     public static void placeTileOnTable(int count) {
         int tilePos = Screen.askGetTileToPlace() -1;
+        if (isTableEmpty()) {
+            table.add(Game.totalPlayers[count].getHand().get(tilePos));
+        } else {
         char tablePos = Screen.askGetTablePlacement();
         if (tablePos == 'E') {
             if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
@@ -41,5 +44,6 @@ public class Table {
             table.addLast(Game.totalPlayers[count].getHand().get(tilePos));
         }
         Game.totalPlayers[count].getHand().remove(tilePos);
+        }
     }
 }

@@ -18,4 +18,12 @@ public class Player {
         }
         return false;
     }
+
+    public int getPoints() {
+        return Points;
+    }
+
+    public void setPoints(int points) {
+        Points = points;
+    }
 }

@@ -58,21 +58,48 @@ public class Background {
                 if (points >= 200){
                     return true;
                 }
+                break;
             case 'C':
             case 'V':
                 if (points >= 100){
                     return true;
                 }
+                break;
             case 'X':
                 if (points >= 121){
                     return true;
                 }
+                break;
             case 'P':
                 if (points >= 20){
                     return true;
                 }
+                break;
             default:
                 return false;
         }
+        return false;
+    }
+
+    public static int totalPoints(int count) {
+        int points = 0;
+        for (int i = 0; i < Game.totalPlayers.length - 1; i++) {
+            for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
+                if (i != count) {
+                    points += Game.totalPlayers[i].getHand().get(j).getValue();
+                }
+            }
+        }
+        return points;
+    }
+
+    public static int getTopPlayer() {
+        int points = 0;
+        for (int i = 1; i < Game.totalPlayers.length - 1; i++) {
+            if (Game.totalPlayers[i - 1].getPoints() > Game.totalPlayers[i].getPoints()) {
+                points = Game.totalPlayers[i - 1].getPoints();
+            }
+        }
+        return points;
     }
 }

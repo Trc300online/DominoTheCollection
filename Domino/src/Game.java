@@ -83,16 +83,21 @@ public class Game {
          */
     }
 
-    public void playGame(int points, char gameType) {
+    public void playGame() {
+        setUpGame();
+
+        char gameMode = gameType;
         // deal tiles from bag to hand
         Background.giveTiles();
+        int PlayerPoints = 0;
 
-        while (!Background.winCond(points, gameType)){
+        while (!Background.winCond(PlayerPoints, gameMode)){
 
             int count = Background.selectStarter();
             int skippedPlayers = 0;
+            boolean roundContinue = true;
 
-            while (skippedPlayers < totalPlayers.length){
+            while (roundContinue){
                 Screen.printTable();
                 Screen.spacer();
                 Screen.printPlayerHand(count);
@@ -106,8 +111,9 @@ public class Game {
                     Table.placeTileOnTable(count);
                 }
 
-                if (totalPlayers[count].isEmptyHand()){
-                    break;
+                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length){
+                    totalPlayers[count].setPoints(Background.totalPoints(count));
+                    roundContinue = false;
                 }
                 if (count++ > totalPlayers.length -1) {
                     count = 0;
@@ -115,6 +121,8 @@ public class Game {
                     count++;
                 }
             }
+
+            PlayerPoints = Background.getTopPlayer();
         }
 
 
