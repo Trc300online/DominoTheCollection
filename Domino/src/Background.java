@@ -9,6 +9,13 @@ public class Background {
     public static void giveTiles() {
         for (int j = 0; j < Game.getNumberOfPlayers(); j++){
 
+            if (!Game.totalPlayers[j].isEmptyHand()) {
+                Game.totalPlayers[j].hand.clear();
+            }
+            if (!Table.isTableEmpty()) {
+                Table.table.clear();
+            }
+
             for (int i = 0; i < 7; i++) {
 
                 int randTile = new Random().nextInt(Bag.bagOfTiles.size());
@@ -83,7 +90,7 @@ public class Background {
 
     public static int totalPoints(int count) {
         int points = 0;
-        for (int i = 0; i < Game.totalPlayers.length - 1; i++) {
+        for (int i = 0; i < Game.totalPlayers.length; i++) {
             for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
                 if (i != count) {
                     points += Game.totalPlayers[i].getHand().get(j).getValue();

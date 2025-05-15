@@ -13,7 +13,6 @@ public class Game {
     }
 
     public static void setUpGame() {
-        Bag.createBag();
 
         if (numberOfPlayers == 4) {
 
@@ -88,11 +87,12 @@ public class Game {
 
         char gameMode = gameType;
         // deal tiles from bag to hand
-        Background.giveTiles();
         int PlayerPoints = 0;
 
         while (!Background.winCond(PlayerPoints, gameMode)){
 
+            Bag.createBag();
+            Background.giveTiles();
             int count = Background.selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
@@ -101,8 +101,9 @@ public class Game {
                 Screen.printTable();
                 Screen.spacer();
                 Screen.printPlayerHand(count);
-                if (!Background.canPlaceTileOnTable(count)){
+                if (!Background.canPlaceTileOnTable(count) && !totalPlayers[count].isEmptyHand()){
                     Screen.errorMng(2);
+                    Screen.spacer();
                     if (Bag.canSteal()) {
                         Bag.steal(count);
                     }
@@ -113,9 +114,10 @@ public class Game {
 
                 if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length){
                     totalPlayers[count].setPoints(Background.totalPoints(count));
+                    Screen.showScore(count);
                     roundContinue = false;
                 }
-                if (count++ > totalPlayers.length -1) {
+                if (count + 1 > totalPlayers.length -1) {
                     count = 0;
                 } else {
                     count++;

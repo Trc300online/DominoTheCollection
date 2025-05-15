@@ -31,19 +31,19 @@ public class Table {
         if (isTableEmpty()) {
             table.add(Game.totalPlayers[count].getHand().get(tilePos));
         } else {
-        char tablePos = Screen.askGetTablePlacement();
-        if (tablePos == 'E') {
-            if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
-                Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+            char tablePos = Screen.askGetTablePlacement();
+            if (tablePos == 'E') {
+                if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
+                    Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+                }
+                table.addFirst(Game.totalPlayers[count].getHand().get(tilePos));
+            } else if (tablePos == 'D') {
+                if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
+                    Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+                }
+                table.addLast(Game.totalPlayers[count].getHand().get(tilePos));
             }
-            table.addFirst(Game.totalPlayers[count].getHand().get(tilePos));
-        } else if (tablePos == 'D') {
-            if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
-                Game.totalPlayers[count].getHand().get(tilePos).flipTile();
-            }
-            table.addLast(Game.totalPlayers[count].getHand().get(tilePos));
         }
         Game.totalPlayers[count].getHand().remove(tilePos);
-        }
     }
 }

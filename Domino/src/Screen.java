@@ -14,6 +14,7 @@ public class Screen {
     }
 
     public static void printPlayerHand(int count) {
+        System.out.println("Jugador " + (count + 1));
         for (int j = 0; j < Game.totalPlayers[count].getHand().size(); j++) {
             System.out.print(Game.totalPlayers[count].getHand().get(j) + " ");
         }
@@ -92,5 +93,9 @@ public class Screen {
         Scanner posTable = new Scanner(System.in);
         System.out.println("A quin extrem vols posar la fitxa: [D] Dreta | [E] Esquerra");
         return posTable.next().toUpperCase().charAt(0);
+    }
+
+    public static void showScore(int count) {
+        System.out.println("el jugador " + (count + 1) + " te " + Game.totalPlayers[count].getPoints() + " punts");
     }
 }
