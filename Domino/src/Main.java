@@ -4,4 +4,6 @@ public class Main {
         Game game = new Game();
         game.playGame();
     }
+
+    /*TODO: abstarct de Game. try merge arrayLists de Tiles*/
 }
