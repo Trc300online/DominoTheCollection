@@ -91,7 +91,7 @@ public class Screen {
 
     public static char askGetTablePlacement() {
         Scanner posTable = new Scanner(System.in);
-        System.out.println("A quin extrem vols posar la fitxa: [D] Dreta | [E] Esquerra");
+        System.out.println("A quin extrem vols posar la fitxa: [E] Esquerra | [D] Dreta");
         return posTable.next().toUpperCase().charAt(0);
     }
 

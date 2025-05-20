@@ -1,4 +1,4 @@
-public class Game {
+public abstract class Game {
 
     private static int numberOfPlayers = Screen.getPlayers();
     private static Player[] team1 = new Player[numberOfPlayers / 2];
