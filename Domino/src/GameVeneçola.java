@@ -1,4 +1,4 @@
-public class GameMexica extends Game{
+public class GameVeneçola extends Game{
     @Override
     public void playGame() {
 

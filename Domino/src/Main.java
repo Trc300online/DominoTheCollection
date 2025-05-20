@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        Game game = new GameMexica();
-        game.playGame();
+        Game selectedGame = GameFactory.createGame(Game.gameType, Game.mode);
+        selectedGame.playGame();
     }
 
     /*TODO: abstarct de Game. try merge arrayLists de Tiles. jocs amb estructura diferent:Ponce(punts per pase),
