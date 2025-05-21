@@ -74,6 +74,9 @@ public class Screen {
         if (errorCode == 2) {
             System.out.println("No pots colocar cap fitxa");
         }
+        if (errorCode == 3) {
+            System.out.println("Tipus de joc desconegut");
+        }
     }
 
     public static void jocIndividual(){
@@ -97,5 +100,17 @@ public class Screen {
 
     public static void showScore(int count) {
         System.out.println("el jugador " + (count + 1) + " te " + Game.totalPlayers[count].getPoints() + " punts");
+    }
+
+    public static void winMsg(char mode, int count) {
+        if (mode != 'I') {
+            if (Game.team1[0] == Game.totalPlayers[count] || Game.team1[1] == Game.totalPlayers[count]) {
+                System.out.println("l'equip 1 (" + Game.team1[0] + ", " + Game.team1[1] + ") ha guanyat !!");
+            } else if (Game.team2[0] == Game.totalPlayers[count] || Game.team2[1] == Game.totalPlayers[count]) {
+                System.out.println("l'equip 2 (" + Game.team2[0] + ", " + Game.team2[1] + ") ha guanyat !!");
+            }
+        } else {
+            System.out.println("El jugador " + count + " ha guanyat !!");
+        }
     }
 }

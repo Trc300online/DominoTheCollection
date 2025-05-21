@@ -1,22 +1,17 @@
-public class GameEspañol extends Game{
-
-    public GameEspañol(char mode) {
-        super();
-    }
-
+public class GameLlatColVen extends Game{
     @Override
     public void playGame() {
         setUpGame();
+        int count = 0;
 
-        char gameMode = gameType;
         // deal tiles from bag to hand
         int PlayerPoints = 0;
 
-        while (!Background.winCond(PlayerPoints, gameMode)){
+        while (!winCond(PlayerPoints)){
 
             Bag.createBag();
             Background.giveTiles();
-            int count = Background.selectStarter();
+            count = Background.selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
 
@@ -36,7 +31,15 @@ public class GameEspañol extends Game{
                 }
 
                 if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length){
-                    totalPlayers[count].setPoints(Background.totalPoints(count));
+                    totalPlayers[count].setPoints(Background.totalPoints(count, mode));
+                    int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
+                    team1[0].setPoints(maxPointsTeam1);
+                    team1[1].setPoints(maxPointsTeam1);
+
+                    int maxPointsTeam2 = Math.max(team2[0].getPoints(), team2[1].getPoints());
+                    team2[0].setPoints(maxPointsTeam2);
+                    team2[1].setPoints(maxPointsTeam2);
+
                     Screen.showScore(count);
                     roundContinue = false;
                 }
@@ -49,5 +52,14 @@ public class GameEspañol extends Game{
 
             PlayerPoints = Background.getTopPlayer();
         }
+        Screen.winMsg(mode, count);
+    }
+
+    @Override
+    public boolean winCond(int points) {
+        if (points >= 100) {
+            return true;
+        }
+        return false;
     }
 }

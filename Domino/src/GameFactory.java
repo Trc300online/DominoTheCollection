@@ -1,21 +1,18 @@
 public class GameFactory {
 
-    public static Game createGame(char gameType, char mode) {
+    public static Game createGame(char gameType) {
         switch (gameType) {
             case 'M':
-                return new GameMexica(mode);
             case 'E':
-                return new GameEspañol(mode);
+                return new GameEspMex();
             case 'L':
-                return new GameLlati(mode);
             case 'C':
-                return new GameColombia(mode);
             case 'V':
-                return new GameVeneçola(mode);
+                return new GameLlatColVen();
             case 'X':
-                return new GameXile(mode);
+                return new GameXile();
             case 'P':
-                return new GamePonce(mode);
+                return new GamePonce();
             default:
                 throw new IllegalArgumentException("Game type not supported: " + gameType);
         }

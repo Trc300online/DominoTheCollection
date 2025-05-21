@@ -59,13 +59,6 @@ public class Background {
 
     public static boolean winCond(int points, char gameType) {
         switch (gameType) {
-            case 'E':
-            case 'M':
-            case 'L':
-                if (points >= 200){
-                    return true;
-                }
-                break;
             case 'C':
             case 'V':
                 if (points >= 100){
@@ -88,12 +81,28 @@ public class Background {
         return false;
     }
 
-    public static int totalPoints(int count) {
+    public static int totalPoints(int count, char mode) {
         int points = 0;
-        for (int i = 0; i < Game.totalPlayers.length; i++) {
-            for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
-                if (i != count) {
-                    points += Game.totalPlayers[i].getHand().get(j).getValue();
+        if (mode != 'I') {
+            if (Game.team1[0] == Game.totalPlayers[count] || Game.team1[1] == Game.totalPlayers[count]) {
+                for (int i = 0; i < Game.team2.length; i++) {
+                    for (int j = 0; j < Game.team2[i].getHand().size(); j++) {
+                        points += Game.team2[i].getHand().get(j).getValue();
+                    }
+                }
+            } else if (Game.team2[0] == Game.totalPlayers[count] || Game.team2[1] == Game.totalPlayers[count]) {
+                for (int i = 0; i < Game.team1.length; i++) {
+                    for (int j = 0; j < Game.team1[i].getHand().size(); j++) {
+                        points += Game.team1[i].getHand().get(j).getValue();
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < Game.totalPlayers.length; i++) {
+                for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
+                    if (i != count) {
+                        points += Game.totalPlayers[i].getHand().get(j).getValue();
+                    }
                 }
             }
         }

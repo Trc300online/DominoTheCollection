@@ -6,6 +6,8 @@ public abstract class Game {
     protected static Player[] totalPlayers;
     protected static char mode;
     protected static char gameType;
+    protected static char[] checkType = {'E','M','L','C','V','X','P'};
+    static int counter = 0;
 
     public static int getNumberOfPlayers(){
         return numberOfPlayers;
@@ -13,8 +15,21 @@ public abstract class Game {
 
     static {
         numberOfPlayers = Screen.getPlayers();
+        if (numberOfPlayers>4) {
+            Screen.errorMng(1);
+            System.exit(1);
+        }
         mode = (numberOfPlayers < 4) ? 'I' : Screen.getGameMode();
         gameType = (mode == 'I') ? Screen.offerIndvGames() : Screen.offerTeamGames();
+        for (int i = 0; i < checkType.length; i++) {
+            if (gameType != checkType[i]) {
+                counter++;
+                if (counter >= checkType.length) {
+                    Screen.errorMng(3);
+                    System.exit(1);
+                }
+            }
+        }
 
         totalPlayers = new Player[numberOfPlayers];
         team1 = mode == 'I' ? null : new Player[numberOfPlayers / 2];
@@ -38,4 +53,6 @@ public abstract class Game {
     }
 
     public abstract void playGame();
+
+    public abstract boolean winCond(int points);
 }

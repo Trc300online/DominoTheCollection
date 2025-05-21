@@ -1,6 +1,0 @@
-public class GameMexica extends Game{
-    @Override
-    public void playGame() {
-
-    }
-}

@@ -1,4 +1,4 @@
-public class GameXile extends Game{
+public class GameEspMex extends Game{
 
     @Override
     public void playGame() {
@@ -54,29 +54,14 @@ public class GameXile extends Game{
 
             PlayerPoints = Background.getTopPlayer();
         }
-        Screen.winMsg(mode, getBottomPlayer());
+        Screen.winMsg(mode, count);
     }
 
     @Override
     public boolean winCond(int points) {
-        if (points >= 121) {
+        if (points >= 200) {
             return true;
         }
         return false;
-    }
-
-    public int getBottomPlayer() {
-        int points = Game.totalPlayers[0].getPoints();
-        int player = -1;
-        for (int i = 1; i < Game.totalPlayers.length - 1; i++) {
-            if (Game.totalPlayers[i - 1].getPoints() < Game.totalPlayers[i].getPoints()
-                    && Game.totalPlayers[i - 1].getPoints() < points) {
-                player = i-1;
-            } else {
-                player = i;
-            }
-        }
-
-        return player;
     }
 }
