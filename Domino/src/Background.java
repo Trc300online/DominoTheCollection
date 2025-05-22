@@ -2,10 +2,6 @@ import java.util.Random;
 
 public class Background {
 
-    public void selectMode(){
-
-    }
-
     public static void giveTiles() {
         for (int j = 0; j < Game.getNumberOfPlayers(); j++){
 
@@ -53,30 +49,6 @@ public class Background {
                 tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
                 return true;
             }
-        }
-        return false;
-    }
-
-    public static boolean winCond(int points, char gameType) {
-        switch (gameType) {
-            case 'C':
-            case 'V':
-                if (points >= 100){
-                    return true;
-                }
-                break;
-            case 'X':
-                if (points >= 121){
-                    return true;
-                }
-                break;
-            case 'P':
-                if (points >= 20){
-                    return true;
-                }
-                break;
-            default:
-                return false;
         }
         return false;
     }

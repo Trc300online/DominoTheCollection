@@ -3,16 +3,6 @@ import java.util.Scanner;
 
 public class Screen {
 
-    public static void printHands() {
-        for (int i = 0; i < Game.getNumberOfPlayers(); i++) {
-            for (int j = 0; j < Game.totalPlayers[i].getHand().size(); j++) {
-                System.out.print(Game.totalPlayers[i].getHand().get(j) + " ");
-            }
-            System.out.println();
-            System.out.println();
-        }
-    }
-
     public static void printPlayerHand(int count) {
         System.out.println("Jugador " + (count + 1));
         for (int j = 0; j < Game.totalPlayers[count].getHand().size(); j++) {

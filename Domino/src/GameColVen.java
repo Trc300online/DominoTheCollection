@@ -1,4 +1,5 @@
-public class GameLlatColVen extends Game{
+public class GameColVen extends Game{
+
     @Override
     public void playGame() {
         setUpGame();
@@ -28,9 +29,10 @@ public class GameLlatColVen extends Game{
                     skippedPlayers++;
                 } else {
                     Table.placeTileOnTable(count);
+                    skippedPlayers = 0;
                 }
 
-                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length){
+                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length - 1){
                     totalPlayers[count].setPoints(Background.totalPoints(count, mode));
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                     team1[0].setPoints(maxPointsTeam1);

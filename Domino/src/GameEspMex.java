@@ -29,9 +29,10 @@ public class GameEspMex extends Game{
                     skippedPlayers++;
                 } else {
                     Table.placeTileOnTable(count);
+                    skippedPlayers = 0;
                 }
 
-                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length){
+                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length - 1){
                     totalPlayers[count].setPoints(Background.totalPoints(count, mode));
                     if (mode != 'I') {
                         int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());

@@ -1,9 +1,9 @@
-public class GameXile extends Game{
+public class GameLlati extends Game{
 
     @Override
     public void playGame() {
         setUpGame();
-        int count;
+        int count = 0;
 
         // deal tiles from bag to hand
         int PlayerPoints = 0;
@@ -33,16 +33,15 @@ public class GameXile extends Game{
                 }
 
                 if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length - 1){
-                    totalPlayers[count].setPoints(Background.totalPoints(count, mode));
-                    if (mode != 'I') {
-                        int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
-                        team1[0].setPoints(maxPointsTeam1);
-                        team1[1].setPoints(maxPointsTeam1);
+                    totalPlayers[count].setPoints(Background.totalPoints(count, mode) + 30);
+                    int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
+                    team1[0].setPoints(maxPointsTeam1);
+                    team1[1].setPoints(maxPointsTeam1);
 
-                        int maxPointsTeam2 = Math.max(team2[0].getPoints(), team2[1].getPoints());
-                        team2[0].setPoints(maxPointsTeam2);
-                        team2[1].setPoints(maxPointsTeam2);
-                    }
+                    int maxPointsTeam2 = Math.max(team2[0].getPoints(), team2[1].getPoints());
+                    team2[0].setPoints(maxPointsTeam2);
+                    team2[1].setPoints(maxPointsTeam2);
+
                     Screen.showScore(count);
                     roundContinue = false;
                 }
@@ -55,29 +54,14 @@ public class GameXile extends Game{
 
             PlayerPoints = Background.getTopPlayer();
         }
-        Screen.winMsg(mode, getBottomPlayer());
+        Screen.winMsg(mode, count);
     }
 
     @Override
     public boolean winCond(int points) {
-        if (points >= 121) {
+        if (points >= 100) {
             return true;
         }
         return false;
-    }
-
-    public int getBottomPlayer() {
-        int points = Game.totalPlayers[0].getPoints();
-        int player = -1;
-        for (int i = 1; i < Game.totalPlayers.length - 1; i++) {
-            if (Game.totalPlayers[i - 1].getPoints() < Game.totalPlayers[i].getPoints()
-                    && Game.totalPlayers[i - 1].getPoints() < points) {
-                player = i-1;
-            } else {
-                player = i;
-            }
-        }
-
-        return player;
     }
 }

@@ -6,9 +6,10 @@ public class GameFactory {
             case 'E':
                 return new GameEspMex();
             case 'L':
+                return new GameLlati();
             case 'C':
             case 'V':
-                return new GameLlatColVen();
+                return new GameColVen();
             case 'X':
                 return new GameXile();
             case 'P':
