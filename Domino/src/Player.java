@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Player {
-    protected ArrayList<Tile> hand = new ArrayList<>();
+    protected TileList hand = new TileList();
     protected int Points = 0;
 
     public void setHand(Tile ficha) {
         hand.add(ficha);
     }
 
-    public ArrayList<Tile> getHand() {
+    public TileList getHand() {
         return hand;
     }
 
