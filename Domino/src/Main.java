@@ -5,6 +5,7 @@ public class Main {
         selectedGame.playGame();
     }
 
-    /*TODO: abstarct de Game ^^^ . try merge/wrapper class for arrayLists de Tiles !?!?!?. jocs amb estructura diferent:Ponce(punts per pase),
+    /*TODO: remove statics attrb, desmontar background*/
+    /* abstarct de Game ^^^ . try merge/wrapper class for arrayLists de Tiles !?!?!?. jocs amb estructura diferent:Ponce(punts per pase),
        Xile(menys punts guanya), Llati,Colomabia,Veneçola(parella suma punts de altre parella) ^^^^ */
 }

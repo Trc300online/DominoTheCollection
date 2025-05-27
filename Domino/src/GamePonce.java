@@ -14,7 +14,7 @@ public class GamePonce extends Game{
         while (!winCond(pointsCalculator(PlayerPoints))){ // pointsCalculator()
 
             Bag.createBag();
-            Background.giveTiles();
+            Bag.giveTiles();
             count = Background.selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;

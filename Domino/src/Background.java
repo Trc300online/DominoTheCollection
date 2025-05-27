@@ -2,25 +2,7 @@ import java.util.Random;
 
 public class Background {
 
-    public static void giveTiles() {
-        for (int j = 0; j < Game.getNumberOfPlayers(); j++){
 
-            if (!Game.totalPlayers[j].isEmptyHand()) {
-                Game.totalPlayers[j].hand.clear();
-            }
-            if (!Table.isTableEmpty()) {
-                Table.table.clear();
-            }
-
-            for (int i = 0; i < 7; i++) {
-
-                int randTile = new Random().nextInt(Bag.bagOfTiles.size());
-                Tile temp = Bag.bagOfTiles.get(randTile);
-                Bag.bagOfTiles.remove(randTile);
-                Game.totalPlayers[j].setHand(temp);
-            }
-        }
-    }
 
     public static int selectStarter() {
         for (int x = 6; x >= 0; x--) {
@@ -35,24 +17,7 @@ public class Background {
         return 0;
     }
 
-    public static boolean canPlaceTileOnTable(int count) {
 
-        if (Table.isTableEmpty()) {
-            return true;
-        }
-
-        int farDreta = Table.getFarDreta();
-        int farEsquerra = Table.getFarEsquerra();
-
-        for (int i = 0; i < Game.totalPlayers[count].getHand().size(); i++) {
-            Tile tile = Game.totalPlayers[count].getHand().get(i);
-            if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
-                tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public static int totalPoints(int count, char mode) {
         int points = 0;

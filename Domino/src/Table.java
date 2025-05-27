@@ -1,30 +1,30 @@
 public class Table {
 
-    protected static TileList table = new TileList();
+    protected TileList table = new TileList();
 
 
-    public static TileList getTable() {
+    public TileList getTable() {
         return table;
     }
 
-    public static boolean isTableEmpty() {
+    public boolean isTableEmpty() {
         if (table.isEmpty()) {
             return true;
         }
         return false;
     }
 
-    public static int getFarDreta() {
+    public int getFarDreta() {
         int value = getTable().get(table.size()-1).getDreta();
         return value;
     }
 
-    public static int getFarEsquerra() {
+    public int getFarEsquerra() {
         int value = getTable().get(0).getEsquerra();
         return value;
     }
 
-    public static void placeTileOnTable(int count) {
+    public void placeTileOnTable(int count) {
         int tilePos = Screen.askGetTileToPlace() -1;
         if (isTableEmpty()) {
             table.add(Game.totalPlayers[count].getHand().get(tilePos));
@@ -44,5 +44,24 @@ public class Table {
             }
         }
         Game.totalPlayers[count].getHand().remove(tilePos);
+    }
+
+    public boolean canPlaceTileOnTable(int count) {
+
+        if (isTableEmpty()) {
+            return true;
+        }
+
+        int farDreta = getFarDreta();
+        int farEsquerra = getFarEsquerra();
+
+        for (int i = 0; i < Game.totalPlayers[count].getHand().size(); i++) {
+            Tile tile = Game.totalPlayers[count].getHand().get(i);
+            if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
+                    tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
+                return true;
+            }
+        }
+        return false;
     }
 }

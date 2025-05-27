@@ -1,9 +1,9 @@
 import java.util.Random;
 
 public class Bag {
-    public static TileList bagOfTiles = new TileList();
+    public TileList bagOfTiles = new TileList();
 
-    public static void createBag() {
+    public void createBag() {
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
                 bagOfTiles.add(new Tile(i, j));
@@ -11,15 +11,34 @@ public class Bag {
         }
     }
 
-    public static boolean canSteal() {
+    public boolean canSteal() {
         return !bagOfTiles.isEmpty();
     }
 
-    public static void steal(int count) {
+    public void steal(int count) {
         int randTile = new Random().nextInt(bagOfTiles.size());
         Tile temp = bagOfTiles.get(randTile);
         bagOfTiles.remove(randTile);
         Game.totalPlayers[count].setHand(temp);
     }
 
+    public void giveTiles() {
+        for (int j = 0; j < Game.getNumberOfPlayers(); j++){
+
+            if (!Game.totalPlayers[j].isEmptyHand()) {
+                Game.totalPlayers[j].hand.clear();
+            }
+            if (!Table.isTableEmpty()) {
+                Table.table.clear();
+            }
+
+            for (int i = 0; i < 7; i++) {
+
+                int randTile = new Random().nextInt(bagOfTiles.size());
+                Tile temp = bagOfTiles.get(randTile);
+                bagOfTiles.remove(randTile);
+                Game.totalPlayers[j].setHand(temp);
+            }
+        }
+    }
 }

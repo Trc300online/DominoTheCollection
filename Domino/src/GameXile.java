@@ -11,7 +11,7 @@ public class GameXile extends Game{
         while (!winCond(PlayerPoints)){
 
             Bag.createBag();
-            Background.giveTiles();
+            Bag.giveTiles();
             count = Background.selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
