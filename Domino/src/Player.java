@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Player {
     protected TileList hand = new TileList();
     protected int Points = 0;
@@ -13,10 +11,7 @@ public class Player {
     }
 
     public boolean isEmptyHand() {
-        if (hand.isEmpty()){
-            return true;
-        }
-        return false;
+        return hand.isEmpty();
     }
 
     public int getPoints() {

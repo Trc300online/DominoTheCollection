@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-
 public class Table {
 
-    protected static ArrayList<Tile> table = new ArrayList<>();
+    protected static TileList table = new TileList();
 
 
-    public static ArrayList<Tile> getTable() {
+    public static TileList getTable() {
         return table;
     }
 
@@ -36,12 +34,13 @@ public class Table {
                 if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
                     Game.totalPlayers[count].getHand().get(tilePos).flipTile();
                 }
-                table.addFirst(Game.totalPlayers[count].getHand().get(tilePos));
+                table.add(0, Game.totalPlayers[count].getHand().get(tilePos)); // .add(0, e) simula un .addFirst(), que no existeix a un List
             } else if (tablePos == 'D') {
                 if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
                     Game.totalPlayers[count].getHand().get(tilePos).flipTile();
                 }
-                table.addLast(Game.totalPlayers[count].getHand().get(tilePos));
+                table.add(Game.totalPlayers[count].getHand().get(tilePos));
+                // se empra .add() perque aquest ja afageix el nou element al final de la llista/array
             }
         }
         Game.totalPlayers[count].getHand().remove(tilePos);

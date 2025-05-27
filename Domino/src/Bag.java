@@ -1,8 +1,7 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Bag {
-    public static ArrayList<Tile> bagOfTiles = new ArrayList<>();
+    public static TileList bagOfTiles = new TileList();
 
     public static void createBag() {
         for (int i = 0; i <= 6; i++) {

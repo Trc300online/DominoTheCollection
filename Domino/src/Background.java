@@ -45,6 +45,7 @@ public class Background {
         int farEsquerra = Table.getFarEsquerra();
 
         for (int i = 0; i < Game.totalPlayers[count].getHand().size(); i++) {
+            Tile tile = Game.totalPlayers[count].getHand().get(i);
             if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
                 tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
                 return true;

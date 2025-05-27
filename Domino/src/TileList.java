@@ -1,4 +1,3 @@
-import java.lang.invoke.VolatileCallSite;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +6,9 @@ public class TileList {
     List<Tile> tiles = new ArrayList<>();
 
     public void add(Tile ficha) {
+        tiles.add(ficha);
+    }
+    public void add(int pos, Tile ficha) {
         tiles.add(ficha);
     }
 
@@ -24,5 +26,12 @@ public class TileList {
 
     public void remove(int tilePos) {
         tiles.remove(tilePos);
+    }
+
+    public boolean isEmpty() {
+        if (tiles.isEmpty()){
+            return true;
+        }
+        return false;
     }
 }
