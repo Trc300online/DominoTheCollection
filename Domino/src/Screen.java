@@ -67,6 +67,12 @@ public class Screen {
         if (errorCode == 3) {
             System.out.println("Tipus de joc desconegut");
         }
+        if (errorCode == 4) {
+            System.out.println("error de input");
+        }
+        if (errorCode == 5) {
+            System.out.println("aquesta fitxa no es pot colocar");
+        }
     }
 
     public static void jocIndividual(){

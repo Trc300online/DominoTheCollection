@@ -38,7 +38,7 @@ public class GamePonce extends Game{
                     skippedPlayers = 0;
                 }
 
-                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length - 1){
+                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length){
                     totalPlayers[count].setPoints(Background.totalPoints(count, mode));
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                     team1[0].setPoints(maxPointsTeam1);

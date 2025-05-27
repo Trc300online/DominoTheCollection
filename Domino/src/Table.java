@@ -33,14 +33,22 @@ public class Table {
             if (tablePos == 'E') {
                 if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
                     Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+                } else if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() == getFarDreta()) {
+                    table.add(0, Game.totalPlayers[count].getHand().get(tilePos)); // .add(0, e) simula un .addFirst(), que no existeix a un List
+                } else {
+                    Screen.errorMng(5);
                 }
-                table.add(0, Game.totalPlayers[count].getHand().get(tilePos)); // .add(0, e) simula un .addFirst(), que no existeix a un List
             } else if (tablePos == 'D') {
                 if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
                     Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+                } else if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() == getFarEsquerra()) {
+                    table.add(Game.totalPlayers[count].getHand().get(tilePos));
+                } else {
+                    Screen.errorMng(5);
                 }
-                table.add(Game.totalPlayers[count].getHand().get(tilePos));
                 // se empra .add() perque aquest ja afageix el nou element al final de la llista/array
+            } else {
+                Screen.errorMng(4);
             }
         }
         Game.totalPlayers[count].getHand().remove(tilePos);
