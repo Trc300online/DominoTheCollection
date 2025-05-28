@@ -20,7 +20,7 @@ public class GameLlati extends Game{
                 Screen.printTable();
                 Screen.spacer();
                 Screen.printPlayerHand(count);
-                if (!Background.canPlaceTileOnTable(count) && !totalPlayers[count].isEmptyHand()){
+                if (!Table.canPlaceTileOnTable(count) && !totalPlayers[count].isEmptyHand()){
                     Screen.errorMng(2);
                     Screen.spacer();
                     if (Bag.canSteal()) {
