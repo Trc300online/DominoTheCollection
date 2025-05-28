@@ -15,18 +15,18 @@ public class Bag {
         return !bagOfTiles.isEmpty();
     }
 
-    public void steal(int count) {
+    public Tile steal() {
         int randTile = new Random().nextInt(bagOfTiles.size());
         Tile temp = bagOfTiles.get(randTile);
         bagOfTiles.remove(randTile);
-        Game.totalPlayers[count].setHand(temp);
+        return temp;
     }
 
     public void giveTiles() {
         for (int j = 0; j < Game.getNumberOfPlayers(); j++){
 
-            if (!Game.totalPlayers[j].isEmptyHand()) {
-                Game.totalPlayers[j].hand.clear();
+            if (!Game.players[j].isEmptyHand()) {
+                Game.players[j].hand.clear();
             }
             if (!Table.isTableEmpty()) {
                 Table.table.clear();
@@ -37,7 +37,7 @@ public class Bag {
                 int randTile = new Random().nextInt(bagOfTiles.size());
                 Tile temp = bagOfTiles.get(randTile);
                 bagOfTiles.remove(randTile);
-                Game.totalPlayers[j].setHand(temp);
+                Game.players[j].setHand(temp);
             }
         }
     }

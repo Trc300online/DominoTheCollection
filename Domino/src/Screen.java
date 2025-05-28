@@ -4,8 +4,8 @@ public class Screen {
 
     public static void printPlayerHand(int count) {
         System.out.println("Jugador " + (count + 1));
-        for (int j = 0; j < Game.totalPlayers[count].getHand().size(); j++) {
-            System.out.print(Game.totalPlayers[count].getHand().get(j) + " ");
+        for (int j = 0; j < Game.players[count].getHand().size(); j++) {
+            System.out.print(Game.players[count].getHand().get(j) + " ");
         }
     }
 
@@ -88,14 +88,14 @@ public class Screen {
     }
 
     public static void showScore(int count) {
-        System.out.println("el jugador " + (count + 1) + " te " + Game.totalPlayers[count].getPoints() + " punts");
+        System.out.println("el jugador " + (count + 1) + " te " + Game.players[count].getPoints() + " punts");
     }
 
     public static void winMsg(char mode, int count) {
         if (mode != 'I') {
-            if (Game.team1[0] == Game.totalPlayers[count] || Game.team1[1] == Game.totalPlayers[count]) {
+            if (Game.team1[0] == Game.players[count] || Game.team1[1] == Game.players[count]) {
                 System.out.println("l'equip 1 (" + Game.team1[0] + ", " + Game.team1[1] + ") ha guanyat !!");
-            } else if (Game.team2[0] == Game.totalPlayers[count] || Game.team2[1] == Game.totalPlayers[count]) {
+            } else if (Game.team2[0] == Game.players[count] || Game.team2[1] == Game.players[count]) {
                 System.out.println("l'equip 2 (" + Game.team2[0] + ", " + Game.team2[1] + ") ha guanyat !!");
             }
         } else {

@@ -3,17 +3,24 @@ public abstract class Game {
     protected static int numberOfPlayers;
     protected static Player[] team1;
     protected static Player[] team2;
-    protected static Player[] totalPlayers;
+    protected static Player[] players;
     protected static char mode;
     protected static char gameType;
     protected static char[] checkType = {'E','M','L','C','V','X','P'};
     static int counter = 0;
+    protected Table mesa;
+    protected Bag bossa;
+    protected Screen screen;
 
     public static int getNumberOfPlayers(){
         return numberOfPlayers;
     }
 
-    static {
+    public Game() {
+        this.mesa = new Table();
+        this.bossa = new Bag();
+        this.screen = new Screen();
+
         numberOfPlayers = Screen.getPlayers();
         if (numberOfPlayers>4) {
             Screen.errorMng(1);
@@ -31,7 +38,7 @@ public abstract class Game {
             }
         }
 
-        totalPlayers = new Player[numberOfPlayers];
+        players = new Player[numberOfPlayers];
         team1 = mode == 'I' ? null : new Player[numberOfPlayers / 2];
         team2 = mode == 'I' ? null : new Player[numberOfPlayers / 2];
     }
@@ -40,7 +47,7 @@ public abstract class Game {
 
         for (int i = 0; i < numberOfPlayers; i++) {
             Player player = new Player();
-            totalPlayers[i] = player;
+            players[i] = player;
 
             if (mode != 'I') {
                 if (i % 2 == 0) {
@@ -50,6 +57,25 @@ public abstract class Game {
                 }
             }
         }
+    }
+
+    public boolean canPlaceTileOnTable(int count) {
+
+        if (mesa.isTableEmpty()) {
+            return true;
+        }
+
+        int farDreta = mesa.getFarDreta();
+        int farEsquerra = mesa.getFarEsquerra();
+
+        for (int i = 0; i < players[count].getHand().size(); i++) {
+            Tile tile = players[count].getHand().get(i);
+            if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
+                    tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public abstract void playGame();

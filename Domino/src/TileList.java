@@ -27,6 +27,9 @@ public class TileList {
     public void remove(int tilePos) {
         tiles.remove(tilePos);
     }
+    public void remove(Tile ficha) {
+        tiles.remove(ficha);
+    }
 
     public boolean isEmpty() {
         if (tiles.isEmpty()){

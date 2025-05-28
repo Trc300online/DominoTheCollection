@@ -10,30 +10,36 @@ public class GameColVen extends Game{
 
         while (!winCond(PlayerPoints)){
 
-            Bag.createBag();
-            Bag.giveTiles();
+            bossa.createBag();
+            bossa.giveTiles();
             count = Background.selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
 
             while (roundContinue){
+
+                Player jugadorActual = players[count];
+
                 Screen.printTable();
                 Screen.spacer();
                 Screen.printPlayerHand(count);
-                if (!Table.canPlaceTileOnTable(count) && !totalPlayers[count].isEmptyHand()){
+                if (!mesa.canPlaceTileOnTable(jugadorActual.getHand()) && !jugadorActual.isEmptyHand()){
                     Screen.errorMng(2);
                     Screen.spacer();
-                    if (Bag.canSteal()) {
-                        Bag.steal(count);
+                    if (bossa.canSteal()) {
+                        jugadorActual.setHand(bossa.steal());  //
                     }
                     skippedPlayers++;
                 } else {
-                    Table.placeTileOnTable(count);
+
+                    Tile tempTile = jugadorActual.hand.get(Screen.askGetTileToPlace() -1);
+                    mesa.placeTileOnTable(tempTile);
+                    jugadorActual.hand.remove(tempTile);
                     skippedPlayers = 0;
                 }
 
-                if (totalPlayers[count].isEmptyHand() || skippedPlayers == totalPlayers.length - 1){
-                    totalPlayers[count].setPoints(Background.totalPoints(count, mode));
+                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length - 1){
+                    jugadorActual.setPoints(Background.totalPoints(count, mode));
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                     team1[0].setPoints(maxPointsTeam1);
                     team1[1].setPoints(maxPointsTeam1);
@@ -45,7 +51,7 @@ public class GameColVen extends Game{
                     Screen.showScore(count);
                     roundContinue = false;
                 }
-                if (count + 1 > totalPlayers.length -1) {
+                if (count + 1 > players.length -1) {
                     count = 0;
                 } else {
                     count++;
