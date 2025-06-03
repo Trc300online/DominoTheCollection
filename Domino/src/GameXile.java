@@ -1,5 +1,9 @@
 public class GameXile extends Game{
 
+    public GameXile(int numberOfPlayers, char mode, char gameType, Screen screen) {
+        super(numberOfPlayers, mode, gameType, screen);
+    }
+
     @Override
     public void playGame() {
         setUpGame();
@@ -12,31 +16,34 @@ public class GameXile extends Game{
 
             bossa.createBag();
             bossa.giveTiles();
-            count = Background.selectStarter();
+            count = selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
 
             while (roundContinue){
+
+                Player jugadorActual = players[count];
+
                 Screen.printTable();
                 Screen.spacer();
                 Screen.printPlayerHand(count);
-                if (!mesa.canPlaceTileOnTable(count) && !players[count].isEmptyHand()){
+                if (!mesa.canPlaceTileOnTable(jugadorActual.getHand()) && !jugadorActual.isEmptyHand()){
                     Screen.errorMng(2);
                     Screen.spacer();
                     if (bossa.canSteal()) {
-                        bossa.steal(count);
+                        jugadorActual.setHand(bossa.steal());
                     }
                     skippedPlayers++;
                 } else {
 
-                    Tile tempTile = players[count].hand.get(Screen.askGetTileToPlace() -1);
+                    Tile tempTile = jugadorActual.hand.get(Screen.askGetTileToPlace() -1);
                     mesa.placeTileOnTable(tempTile);
-                    players[count].hand.remove(tempTile);
+                    jugadorActual.hand.remove(tempTile);
                     skippedPlayers = 0;
                 }
 
-                if (players[count].isEmptyHand() || skippedPlayers == players.length - 1){
-                    players[count].setPoints(Background.totalPoints(count, mode));
+                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length - 1){
+                    jugadorActual.setPoints(totalPoints(count, mode));
                     if (mode != 'I') {
                         int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                         team1[0].setPoints(maxPointsTeam1);
@@ -56,7 +63,7 @@ public class GameXile extends Game{
                 }
             }
 
-            PlayerPoints = Background.getTopPlayer();
+            PlayerPoints = getTopPlayer();
         }
         Screen.winMsg(mode, getBottomPlayer());
     }
@@ -70,11 +77,11 @@ public class GameXile extends Game{
     }
 
     public int getBottomPlayer() {
-        int points = Game.players[0].getPoints();
+        int points = players[0].getPoints();
         int player = -1;
-        for (int i = 1; i < Game.players.length - 1; i++) {
-            if (Game.players[i - 1].getPoints() < Game.players[i].getPoints()
-                    && Game.players[i - 1].getPoints() < points) {
+        for (int i = 1; i < players.length - 1; i++) {
+            if (players[i - 1].getPoints() < players[i].getPoints()
+                    && players[i - 1].getPoints() < points) {
                 player = i-1;
             } else {
                 player = i;

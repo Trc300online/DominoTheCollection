@@ -102,4 +102,18 @@ public class Screen {
             System.out.println("El jugador " + count + " ha guanyat !!");
         }
     }
+
+    public char checkGameType(char gameType, char[] checkType) {
+        int counter = 0;
+        for (int i = 0; i < checkType.length; i++) {
+            if (gameType != checkType[i]) {
+                counter++;
+                if (counter >= checkType.length) {
+                    Screen.errorMng(3);
+                    System.exit(1);
+                }
+            }
+        }
+        return gameType;
+    }
 }

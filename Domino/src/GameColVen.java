@@ -1,5 +1,9 @@
 public class GameColVen extends Game{
 
+    public GameColVen(int numberOfPlayers, char mode, char gameType, Screen screen) {
+        super(numberOfPlayers, mode, gameType, screen);
+    }
+
     @Override
     public void playGame() {
         setUpGame();
@@ -12,7 +16,7 @@ public class GameColVen extends Game{
 
             bossa.createBag();
             bossa.giveTiles();
-            count = Background.selectStarter();
+            count = selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
 
@@ -39,7 +43,7 @@ public class GameColVen extends Game{
                 }
 
                 if (jugadorActual.isEmptyHand() || skippedPlayers == players.length - 1){
-                    jugadorActual.setPoints(Background.totalPoints(count, mode));
+                    jugadorActual.setPoints(totalPoints(count, mode));
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                     team1[0].setPoints(maxPointsTeam1);
                     team1[1].setPoints(maxPointsTeam1);
@@ -58,7 +62,7 @@ public class GameColVen extends Game{
                 }
             }
 
-            PlayerPoints = Background.getTopPlayer();
+            PlayerPoints = getTopPlayer();
         }
         Screen.winMsg(mode, count);
     }

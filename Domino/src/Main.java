@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        Game selectedGame = GameFactory.createGame(Game.gameType);
+        Game selectedGame = GameFactory.createGame(Game.gameTypeChecked);
         selectedGame.playGame();
     }
 

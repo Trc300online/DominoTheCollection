@@ -3,6 +3,10 @@ import java.math.RoundingMode;
 
 public class GamePonce extends Game{
 
+    public GamePonce(int numberOfPlayers, char mode, char gameType, Screen screen) {
+        super(numberOfPlayers, mode, gameType, screen);
+    }
+
     @Override
     public void playGame() {
         setUpGame();
@@ -15,34 +19,37 @@ public class GamePonce extends Game{
 
             bossa.createBag();
             bossa.giveTiles();
-            count = Background.selectStarter();
+            count = selectStarter();
             int skippedPlayers = 0;
             boolean roundContinue = true;
             boolean firstTime = true;
 
             while (roundContinue){
+
+                Player jugadorActual = players[count];
+
                 Screen.printTable();
                 Screen.spacer();
                 Screen.printPlayerHand(count);
-                if (!mesa.canPlaceTileOnTable(count) && !players[count].isEmptyHand()){
+                if (!mesa.canPlaceTileOnTable(jugadorActual.getHand()) && !jugadorActual.isEmptyHand()){
                     Screen.errorMng(2);
                     Screen.spacer();
                     if (bossa.canSteal()) {
-                        bossa.steal(count);
+                        jugadorActual.setHand(bossa.steal());
                     }
                     skippedPlayers++;
                     updatePlayerPoints(count, firstTime, skippedPlayers);
                     firstTime = false;
                 } else {
 
-                    Tile tempTile = players[count].hand.get(Screen.askGetTileToPlace() -1);
+                    Tile tempTile = jugadorActual.hand.get(Screen.askGetTileToPlace() -1);
                     mesa.placeTileOnTable(tempTile);
-                    players[count].hand.remove(tempTile);
+                    jugadorActual.hand.remove(tempTile);
                     skippedPlayers = 0;
                 }
 
-                if (players[count].isEmptyHand() || skippedPlayers == players.length - 1){
-                    players[count].setPoints(Background.totalPoints(count, mode));
+                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length - 1){
+                    jugadorActual.setPoints(totalPoints(count, mode));
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                     team1[0].setPoints(maxPointsTeam1);
                     team1[1].setPoints(maxPointsTeam1);
@@ -61,7 +68,7 @@ public class GamePonce extends Game{
                 }
             }
 
-            PlayerPoints = Background.getTopPlayer();
+            PlayerPoints = getTopPlayer();
         }
         Screen.winMsg(mode, count);
     }
