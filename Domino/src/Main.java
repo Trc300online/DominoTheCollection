@@ -1,7 +1,20 @@
 public class Main {
     public static void main(String[] args) {
+        int numberOfPlayers;
+        char gameType;
+        numberOfPlayers = Screen.getPlayers();
+        char mode = Screen.getGameMode();
+        if (mode == 'I') {
+            if (numberOfPlayers < 4) {
+                Screen.jocIndividual();
+            }
+            gameType = Screen.offerIndvGames();
+        } else {
+            gameType = Screen.offerTeamGames();
+        }
 
-        Game selectedGame = GameFactory.createGame();
+
+        Game selectedGame = GameFactory.createGame(gameType, numberOfPlayers, mode);
         selectedGame.playGame();
     }
 

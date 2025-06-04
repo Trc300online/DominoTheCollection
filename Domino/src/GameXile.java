@@ -1,7 +1,7 @@
 public class GameXile extends Game{
 
-    public GameXile(int numberOfPlayers, char mode, char gameType, Screen screen) {
-        super(numberOfPlayers, mode, gameType, screen);
+    public GameXile(int numberOfPlayers, char mode, char gameType) {
+        super(numberOfPlayers, mode, gameType);
     }
 
     @Override

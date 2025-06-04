@@ -3,8 +3,8 @@ import java.math.RoundingMode;
 
 public class GamePonce extends Game{
 
-    public GamePonce(int numberOfPlayers, char mode, char gameType, Screen screen) {
-        super(numberOfPlayers, mode, gameType, screen);
+    public GamePonce(int numberOfPlayers, char mode, char gameType) {
+        super(numberOfPlayers, mode, gameType);
     }
 
     @Override

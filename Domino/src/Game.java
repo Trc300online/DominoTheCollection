@@ -17,10 +17,10 @@ public abstract class Game {
         return numberOfPlayers;
     }
 
-    public Game(int numberOfPlayers, char mode, char gameType, Screen screen) {
+    public Game(int numberOfPlayers, char mode, char gameType) {
         this.mesa = new Table();
         this.bossa = new Bag();
-        this.screen = screen;
+        this.screen = new Screen();
         
         if (numberOfPlayers>4) {
             screen.errorMng(1);

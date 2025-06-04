@@ -1,7 +1,7 @@
 public class GameEspMex extends Game{
 
-    public GameEspMex(int numberOfPlayers, char mode, char gameType, Screen screen) {
-        super(numberOfPlayers, mode, gameType, screen);
+    public GameEspMex(int numberOfPlayers, char mode, char gameType) {
+        super(numberOfPlayers, mode, gameType);
     }
 
     @Override

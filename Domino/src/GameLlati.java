@@ -1,7 +1,7 @@
 public class GameLlati extends Game{
 
-    public GameLlati(int numberOfPlayers, char mode, char gameType, Screen screen) {
-        super(numberOfPlayers, mode, gameType, screen);
+    public GameLlati(int numberOfPlayers, char mode, char gameType) {
+        super(numberOfPlayers, mode, gameType);
     }
 
     @Override

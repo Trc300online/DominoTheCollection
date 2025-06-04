@@ -1,7 +1,7 @@
 public class GameColVen extends Game{
 
-    public GameColVen(int numberOfPlayers, char mode, char gameType, Screen screen) {
-        super(numberOfPlayers, mode, gameType, screen);
+    public GameColVen(int numberOfPlayers, char mode, char gameType) {
+        super(numberOfPlayers, mode, gameType);
     }
 
     @Override
