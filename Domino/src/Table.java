@@ -1,6 +1,6 @@
 public class Table {
 
-    protected  TileList table = new TileList();
+    protected TileList table = new TileList();
 
 
     public TileList getTable() {
@@ -24,28 +24,29 @@ public class Table {
         return value;
     }
 
-    public void placeTileOnTable(Tile ficha) {
+    public void placeTileOnTable(int count) {
+        int tilePos = Screen.askGetTileToPlace() -1;
         if (isTableEmpty()) {
-            table.add(ficha);
+            table.add(Game.totalPlayers[count].getHand().get(tilePos));
         } else {
             char tablePos = Screen.askGetTablePlacement();
             if (tablePos == 'E') {
-                if (ficha.getDreta() != getFarEsquerra()) {
-                    ficha.flipTile();
+                if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
+                    Game.totalPlayers[count].getHand().get(tilePos).flipTile();
                 }
-                table.add(0, ficha); // .add(0, e) simula un .addFirst(), que no existeix a un List
+                table.add(0, Game.totalPlayers[count].getHand().get(tilePos)); // .add(0, e) simula un .addFirst(), que no existeix a un List
             } else if (tablePos == 'D') {
-                if (ficha.getEsquerra() != getFarDreta()) {
-                    ficha.flipTile();
+                if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
+                    Game.totalPlayers[count].getHand().get(tilePos).flipTile();
                 }
-                table.add(ficha);
+                table.add(Game.totalPlayers[count].getHand().get(tilePos));
                 // se empra .add() perque aquest ja afageix el nou element al final de la llista/array
             }
         }
+        Game.totalPlayers[count].getHand().remove(tilePos);
     }
 
-
-    public boolean canPlaceTileOnTable(TileList tiles) {
+    public boolean canPlaceTileOnTable(int count) {
 
         if (isTableEmpty()) {
             return true;
@@ -54,14 +55,13 @@ public class Table {
         int farDreta = getFarDreta();
         int farEsquerra = getFarEsquerra();
 
-        for (int i = 0; i < tiles.size(); i++) {
-            if (tiles.get(i).getDreta() == farDreta || tiles.get(i).getEsquerra() == farDreta ||
-                    tiles.get(i).getDreta() == farEsquerra || tiles.get(i).getEsquerra() == farEsquerra) {
+        for (int i = 0; i < Game.totalPlayers[count].getHand().size(); i++) {
+            Tile tile = Game.totalPlayers[count].getHand().get(i);
+            if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
+                    tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
                 return true;
             }
         }
-
         return false;
     }
-
 }
