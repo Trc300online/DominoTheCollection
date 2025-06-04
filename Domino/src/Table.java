@@ -24,29 +24,28 @@ public class Table {
         return value;
     }
 
-    public void placeTileOnTable(int count) {
+    public void placeTileOnTable(Tile ficha) {
         int tilePos = Screen.askGetTileToPlace() -1;
         if (isTableEmpty()) {
-            table.add(Game.totalPlayers[count].getHand().get(tilePos));
+            table.add(ficha);
         } else {
             char tablePos = Screen.askGetTablePlacement();
             if (tablePos == 'E') {
-                if (Game.totalPlayers[count].getHand().get(tilePos).getDreta() != getFarEsquerra()) {
-                    Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+                if (ficha.getDreta() != getFarEsquerra()) {
+                    ficha.flipTile();
                 }
-                table.add(0, Game.totalPlayers[count].getHand().get(tilePos)); // .add(0, e) simula un .addFirst(), que no existeix a un List
+                table.add(0, ficha); // .add(0, e) simula un .addFirst(), que no existeix a un List
             } else if (tablePos == 'D') {
-                if (Game.totalPlayers[count].getHand().get(tilePos).getEsquerra() != getFarDreta()) {
-                    Game.totalPlayers[count].getHand().get(tilePos).flipTile();
+                if (ficha.getEsquerra() != getFarDreta()) {
+                    ficha.flipTile();
                 }
-                table.add(Game.totalPlayers[count].getHand().get(tilePos));
+                table.add(ficha);
                 // se empra .add() perque aquest ja afageix el nou element al final de la llista/array
             }
         }
-        Game.totalPlayers[count].getHand().remove(tilePos);
     }
 
-    public boolean canPlaceTileOnTable(int count) {
+    public boolean canPlaceTileOnTable(TileList hand) {
 
         if (isTableEmpty()) {
             return true;
@@ -55,8 +54,8 @@ public class Table {
         int farDreta = getFarDreta();
         int farEsquerra = getFarEsquerra();
 
-        for (int i = 0; i < Game.totalPlayers[count].getHand().size(); i++) {
-            Tile tile = Game.totalPlayers[count].getHand().get(i);
+        for (int i = 0; i < hand.size(); i++) {
+            Tile tile = hand.get(i);
             if (tile.getDreta() == farDreta || tile.getEsquerra() == farDreta ||
                     tile.getDreta() == farEsquerra || tile.getEsquerra() == farEsquerra) {
                 return true;

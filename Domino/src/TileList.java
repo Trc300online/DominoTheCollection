@@ -9,7 +9,7 @@ public class TileList {
         tiles.add(ficha);
     }
     public void add(int pos, Tile ficha) {
-        tiles.add(ficha);
+        tiles.add(pos, ficha);
     }
 
     public int size() {
@@ -24,8 +24,8 @@ public class TileList {
         tiles.clear();
     }
 
-    public void remove(int tilePos) {
-        tiles.remove(tilePos);
+    public void remove(Tile tile) {
+        tiles.remove(tile);
     }
 
     public boolean isEmpty() {

@@ -20,7 +20,7 @@ public class Bag {
     public Tile steal() {
         int randTile = new Random().nextInt(bagOfTiles.size());
         Tile temp = bagOfTiles.get(randTile);
-        bagOfTiles.remove(randTile);
+        bagOfTiles.remove(temp);
         return temp;
     }
 
@@ -38,7 +38,7 @@ public class Bag {
 
                 int randTile = new Random().nextInt(bagOfTiles.size());
                 Tile temp = bagOfTiles.get(randTile);
-                bagOfTiles.remove(randTile);
+                bagOfTiles.remove(temp);
                 game.players[j].setHand(temp);
             }
         }
