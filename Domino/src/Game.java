@@ -19,7 +19,12 @@ public abstract class Game {
             Screen.errorMng(1);
             System.exit(1);
         }
-        mode = (numberOfPlayers < 4) ? 'I' : Screen.getGameMode();
+        if (numberOfPlayers < 4) {
+            Screen.jocIndividual();
+            mode = 'I';
+        } else {
+            mode = Screen.getGameMode();
+        }
         gameType = (mode == 'I') ? Screen.offerIndvGames() : Screen.offerTeamGames();
         for (int i = 0; i < checkType.length; i++) {
             if (gameType != checkType[i]) {
