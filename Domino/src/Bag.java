@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class Bag {
     public TileList bagOfTiles = new TileList();
+    private Game game;
+    private Table mesa;
 
     public void createBag() {
         for (int i = 0; i <= 6; i++) {
@@ -23,13 +25,13 @@ public class Bag {
     }
 
     public void giveTiles() {
-        for (int j = 0; j < Game.getNumberOfPlayers(); j++){
+        for (int j = 0; j < game.getNumberOfPlayers(); j++){
 
-            if (!Game.players[j].isEmptyHand()) {
-                Game.players[j].hand.clear();
+            if (!game.players[j].isEmptyHand()) {
+                game.players[j].hand.clear();
             }
-            if (!Table.isTableEmpty()) {
-                Table.table.clear();
+            if (!mesa.isTableEmpty()) {
+                mesa.table.clear();
             }
 
             for (int i = 0; i < 7; i++) {
@@ -37,7 +39,7 @@ public class Bag {
                 int randTile = new Random().nextInt(bagOfTiles.size());
                 Tile temp = bagOfTiles.get(randTile);
                 bagOfTiles.remove(randTile);
-                Game.players[j].setHand(temp);
+                game.players[j].setHand(temp);
             }
         }
     }

@@ -24,19 +24,19 @@ public class GameLlati extends Game{
 
                 Player jugadorActual = players[count];
 
-                Screen.printTable();
-                Screen.spacer();
-                Screen.printPlayerHand(count);
+                screen.printTable();
+                screen.spacer();
+                screen.printPlayerHand(count);
                 if (!mesa.canPlaceTileOnTable(jugadorActual.getHand()) && !jugadorActual.isEmptyHand()){
-                    Screen.errorMng(2);
-                    Screen.spacer();
+                    screen.errorMng(2);
+                    screen.spacer();
                     if (bossa.canSteal()) {
                         jugadorActual.setHand(bossa.steal());
                     }
                     skippedPlayers++;
                 } else {
 
-                    Tile tempTile = jugadorActual.hand.get(Screen.askGetTileToPlace() -1);
+                    Tile tempTile = jugadorActual.hand.get(screen.askGetTileToPlace() -1);
                     mesa.placeTileOnTable(tempTile);
                     jugadorActual.hand.remove(tempTile);
                     skippedPlayers = 0;
@@ -52,7 +52,7 @@ public class GameLlati extends Game{
                     team2[0].setPoints(maxPointsTeam2);
                     team2[1].setPoints(maxPointsTeam2);
 
-                    Screen.showScore(count);
+                    screen.showScore(count);
                     roundContinue = false;
                 }
                 if (count + 1 > players.length -1) {
@@ -64,7 +64,7 @@ public class GameLlati extends Game{
 
             PlayerPoints = getTopPlayer();
         }
-        Screen.winMsg(mode, count);
+        screen.winMsg(mode, count);
     }
 
     @Override

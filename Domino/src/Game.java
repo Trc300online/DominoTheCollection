@@ -23,7 +23,7 @@ public abstract class Game {
         this.screen = screen;
         
         if (numberOfPlayers>4) {
-            Screen.errorMng(1);
+            screen.errorMng(1);
             System.exit(1);
         }
         this.numberOfPlayers = numberOfPlayers;
