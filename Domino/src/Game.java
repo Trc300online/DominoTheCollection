@@ -19,8 +19,8 @@ public abstract class Game {
 
     public Game(int numberOfPlayers, char mode, char gameType) {
         this.mesa = new Table();
-        this.bossa = new Bag();
-        this.screen = new Screen();
+        this.bossa = new Bag(this, mesa);
+        this.screen = new Screen(this, mesa);
         
         if (numberOfPlayers>4) {
             screen.errorMng(1);

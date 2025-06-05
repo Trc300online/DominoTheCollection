@@ -42,7 +42,7 @@ public class GameLlati extends Game{
                     skippedPlayers = 0;
                 }
 
-                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length - 1){
+                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length){
                     jugadorActual.setPoints(totalPoints(count, mode) + 30);
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());
                     team1[0].setPoints(maxPointsTeam1);

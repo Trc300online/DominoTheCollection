@@ -4,7 +4,9 @@ public class Screen {
     private Game game;
     private Table mesa;
 
-    public Screen() {
+    public Screen(Game game, Table mesa) {
+        this.game = game;
+        this.mesa = mesa;
     }
 
     public void printPlayerHand(int count) {

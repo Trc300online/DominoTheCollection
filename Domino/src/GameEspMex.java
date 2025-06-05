@@ -42,7 +42,7 @@ public class GameEspMex extends Game{
                     skippedPlayers = 0;
                 }
 
-                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length - 1){
+                if (jugadorActual.isEmptyHand() || skippedPlayers == players.length){
                     jugadorActual.setPoints(totalPoints(count, mode));
                     if (mode != 'I') {
                         int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());

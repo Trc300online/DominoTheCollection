@@ -25,7 +25,6 @@ public class Table {
     }
 
     public void placeTileOnTable(Tile ficha) {
-        int tilePos = Screen.askGetTileToPlace() -1;
         if (isTableEmpty()) {
             table.add(ficha);
         } else {

@@ -1,4 +1,4 @@
 package SaveAndLoad;
 
-public class GameDAOImpl {
+public class GameDAOImpl implements GameDAO{
 }

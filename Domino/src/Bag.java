@@ -5,6 +5,11 @@ public class Bag {
     private Game game;
     private Table mesa;
 
+    public Bag(Game game, Table mesa) {
+        this.game = game;
+        this.mesa = mesa;
+    }
+
     public void createBag() {
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
@@ -42,5 +47,9 @@ public class Bag {
                 game.players[j].setHand(temp);
             }
         }
+    }
+
+    public TileList getAll() {
+        return bagOfTiles;
     }
 }
