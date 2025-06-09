@@ -1,4 +1,6 @@
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     protected TileList hand = new TileList();
     protected int Points = 0;
 
