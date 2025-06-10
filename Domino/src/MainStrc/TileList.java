@@ -1,9 +1,10 @@
 package MainStrc;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileList {
+public class TileList implements Serializable {
 
     List<Tile> tiles = new ArrayList<>();
 

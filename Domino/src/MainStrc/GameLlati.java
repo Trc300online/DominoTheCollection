@@ -41,9 +41,11 @@ public class GameLlati extends Game {
 
         while (!winCond(PlayerPoints)){
 
-            bossa.createBag();
-            bossa.giveTiles();
-            count = selectStarter();
+            if (carregat == null) {
+                bossa.createBag();
+                bossa.giveTiles();
+                count = selectStarter();
+            }
             int skippedPlayers = 0;
             boolean roundContinue = true;
 
@@ -68,7 +70,7 @@ public class GameLlati extends Game {
                     jugadorActual.hand.remove(tempTile);
                     skippedPlayers = 0;
                 }
-
+                screen.clearScreen();
                 if (jugadorActual.isEmptyHand() || skippedPlayers == players.length){
                     jugadorActual.setPoints(totalPoints(count, mode) + 30);
                     int maxPointsTeam1 = Math.max(team1[0].getPoints(), team1[1].getPoints());

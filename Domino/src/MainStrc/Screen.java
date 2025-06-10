@@ -132,4 +132,10 @@ public class Screen {
         char resposta = scanner.next().toUpperCase().charAt(0);
         return resposta;
     }
+
+    public void clearScreen(){
+        for(int i = 0; i < 100; i++){
+            System.out.println();
+        }
+    }
 }
