@@ -1,3 +1,5 @@
+package MainStrc;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,12 @@ public class TileList {
     }
     public void add(int pos, Tile ficha) {
         tiles.add(pos, ficha);
+    }
+
+    public void addAll(List list) {
+        for (int i = 0; i < list.size(); i++) {
+            this.add((Tile) list.get(i));
+        }
     }
 
     public int size() {

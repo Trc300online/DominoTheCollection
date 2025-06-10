@@ -1,5 +1,8 @@
 package SaveAndLoad;
 import java.io.Serializable;
+import java.util.List;
+import MainStrc.Player;
+import MainStrc.Tile;
 
 public class GameState implements Serializable {
 

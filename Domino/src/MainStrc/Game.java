@@ -1,3 +1,5 @@
+package MainStrc;
+
 public abstract class Game {
 
     protected int numberOfPlayers;
@@ -8,7 +10,6 @@ public abstract class Game {
     protected char gameType;
     protected char gameTypeChecked;
     protected char[] checkType = {'E','M','L','C','V','X','P'};
-    protected int counter = 0;
     protected Table mesa;
     protected Bag bossa;
     protected Screen screen;

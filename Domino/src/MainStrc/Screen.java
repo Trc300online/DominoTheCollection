@@ -1,3 +1,5 @@
+package MainStrc;
+
 import java.util.Scanner;
 
 public class Screen {
@@ -122,5 +124,12 @@ public class Screen {
             }
         }
         return gameType;
+    }
+
+    public char askLoadGame() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Vols carregar una partida guardada? [S/N]");
+        char resposta = scanner.next().toUpperCase().charAt(0);
+        return resposta;
     }
 }

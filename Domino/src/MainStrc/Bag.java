@@ -1,6 +1,9 @@
+package MainStrc;
+
+import java.io.Serializable;
 import java.util.Random;
 
-public class Bag {
+public class Bag implements Serializable {
     public TileList bagOfTiles = new TileList();
     private Game game;
     private Table mesa;

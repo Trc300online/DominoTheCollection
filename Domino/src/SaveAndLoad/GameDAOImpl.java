@@ -2,7 +2,7 @@ package SaveAndLoad;
 
 import java.io.*;
 
-public class GameDAOImpl implements GameDAO{
+public class GameDAOImpl implements GameDAO, Serializable{
 
     @Override
     public void saveGame(GameState gameState, String fileName) {

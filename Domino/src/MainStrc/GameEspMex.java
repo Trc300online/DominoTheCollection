@@ -1,13 +1,40 @@
-public class GameXile extends Game{
+package MainStrc;
 
-    public GameXile(int numberOfPlayers, char mode, char gameType) {
+import SaveAndLoad.GameDAO;
+import SaveAndLoad.GameDAOImpl;
+import SaveAndLoad.GameState;
+
+public class GameEspMex extends Game {
+
+    public GameEspMex(int numberOfPlayers, char mode, char gameType) {
         super(numberOfPlayers, mode, gameType);
     }
 
     @Override
     public void playGame() {
-        setUpGame();
-        int count;
+        int count = 0;
+        GameDAO dao = new GameDAOImpl();
+        GameState carregat = null;
+
+        if (screen.askLoadGame() == 'S') {
+            carregat = dao.loadGame("partidaEspMex.ser");
+        }
+
+        if (carregat != null){
+            this.players = carregat.players;
+            this.team1 = carregat.team1;
+            this.team2 = carregat.team2;
+            this.mode = carregat.mode;
+            this.gameType = carregat.gameType;
+            count = carregat.currentPlayerIndex;
+            mesa.getTable().clear();
+            mesa.getTable().tiles.addAll(carregat.table);
+            bossa.getAll().clear();
+            bossa.getAll().addAll(carregat.bag);
+            System.out.println("Partida carregada correctament!");
+        } else {
+            setUpGame();
+        }
 
         // deal tiles from bag to hand
         int PlayerPoints = 0;
@@ -61,33 +88,21 @@ public class GameXile extends Game{
                 } else {
                     count++;
                 }
+
+                GameState estat = new GameState(players, team1, team2, mode, gameTypeChecked, count, mesa.getTable().tiles, bossa.getAll().tiles);
+                dao.saveGame(estat, "partidaEspMex.ser");
             }
 
             PlayerPoints = getTopPlayer();
         }
-        screen.winMsg(mode, getBottomPlayer());
+        screen.winMsg(mode, count);
     }
 
     @Override
     public boolean winCond(int points) {
-        if (points >= 121) {
+        if (points >= 200) {
             return true;
         }
         return false;
-    }
-
-    public int getBottomPlayer() {
-        int points = players[0].getPoints();
-        int player = -1;
-        for (int i = 1; i < players.length - 1; i++) {
-            if (players[i - 1].getPoints() < players[i].getPoints()
-                    && players[i - 1].getPoints() < points) {
-                player = i-1;
-            } else {
-                player = i;
-            }
-        }
-
-        return player;
     }
 }

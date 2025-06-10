@@ -1,3 +1,5 @@
+package MainStrc;
+
 public class GameFactory {
 
     public static Game createGame(char gameType, int numberOfPlayers, char mode) {
@@ -15,7 +17,7 @@ public class GameFactory {
             case 'P':
                 return new GamePonce(numberOfPlayers, mode, gameType);
             default:
-                throw new IllegalArgumentException("Game type not supported: " + gameType);
+                throw new IllegalArgumentException("MainStrc.Game type not supported: " + gameType);
         }
     }
 }

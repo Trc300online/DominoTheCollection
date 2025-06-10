@@ -1,4 +1,8 @@
-public class Table {
+package MainStrc;
+
+import java.io.Serializable;
+
+public class Table implements Serializable {
 
     protected TileList table = new TileList();
 
